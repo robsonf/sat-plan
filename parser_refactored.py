@@ -10,14 +10,14 @@ import argparse
 
 def export_cnf(variables, clauses):
     cnf_file = open('cnf','w')
-    cnf_file.write(" c "+str(variables)+"\n")
+    #cnf_file.write(" c "+str(variables)+"\n")
     cnf_file.write('p cnf '+str(len(variables))+' '+str(len(clauses)) + '\n')
     for l in clauses:
         cnf_file.write(l + ' 0\n')
     cnf_file.close()
 
 def run_solver():
-    os.system("./zchaff-2/zchaff cnf 1000  > result.txt")
+    os.system("./zchaff64/zchaff cnf > result.txt")
     #os.system("rm cnf")
 
 def is_solution():
