@@ -1,0 +1,13 @@
+import argparse
+parser = argparse.ArgumentParser(description='Value of n times')
+parser.add_argument('integers', metavar='N', type=int, nargs='+',
+                   help='An integer for number of plan')
+args = parser.parse_args().integers
+print args[0]
+
+f = open('asdf.txt')
+file = f.read()
+if "RESULT:	SAT" in file:
+  print "satisfazivel"
+else:
+  print "nao sat"

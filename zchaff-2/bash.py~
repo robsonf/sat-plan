@@ -1,0 +1,4 @@
+import os
+os.system("./zchaff cnf > asdf.txt")
+os.system("python teste.py < asdf.txt")
+
