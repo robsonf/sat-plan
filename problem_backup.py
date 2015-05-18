@@ -2,25 +2,10 @@
 from action import Action
 class Problem:
     def __init__(self, actions, initial, goal):
-        for a in actions:
-            a.name += '@'
-            for i in range(len(a.prec)):
-                a.prec[i] += '@'
-            for i in range(len(a.eff)):
-                a.eff[i] += '@'
-        #print [str(a) for a in actions]
         self.actions = actions
-        self.initial = [a+'@' for a in initial]
-        self.goal = [a+'@' for a in goal]
+        self.initial = initial
+        self.goal = goal
 
-        for i in range(len(initial)):
-            initial[i] += '@'
-        for i in range(len(goal)):
-            goal[i] += '@'
-        
-        #print '\nINICIAL: ' , [a for a in initial]
-        #print '\nOBJETIVO: ' , [a for a in goal]
-        
         predicate_fluents = set()
         for action in actions:
             for f in action.prec + action.eff:
@@ -44,7 +29,7 @@ class Problem:
              prec = iter_actions_file.next().split(';')
              eff = iter_actions_file.next().split(';')
              actions.append(Action(action_name, prec, eff))
-        
+
         # conjunto de fluentes de predicado e ações
         initial = init_goal_file[0].split(';')
         goal = init_goal_file[1].split(';')

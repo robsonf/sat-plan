@@ -35,10 +35,9 @@ def extract_plan(variables, action_fluents):
     plan = []
     for m in model:
         l = get_literal(variables,m)
-        #action_name = l.translate(None, digits)
-        action_name = l.split('@')[0]+'@'
+        action_name = l.translate(None, digits)
         if action_name in action_fluents:
-            plan.append(action_name.replace('@',''))
+            plan.append(action_name)
             #plan.append(l) 
             #l.translate(None, letters + '~')
     #print 'plan:<'+';'.join(plan)+'>'
@@ -77,9 +76,11 @@ def main():
     files_input = open(args.input+'files_input').read().split('\n')
     files_input = files_input[:len(files_input)-1]
     output_lines = []
+    #print [file_name for file_name in files_input]
     for file_name in files_input:
         initial_time = clock()
         problem = Problem.read_strips(args.input+file_name)
+        #problem = Problem.read_strips(args.input)
         time = 0
         while(True):
             time = time + 1

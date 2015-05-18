@@ -74,5 +74,7 @@ def clauses_extractor(time, problem):
         # extrair axioma de não-paralelismo
         combination_actions = [j for j in itertools.combinations(problem.action_fluents, 2)]
         clauses = clauses + [get_literal_id(variables, not_literal(ca[0])+str(i)) + " " + get_literal_id(variables, not_literal(ca[1])+str(i)) for ca in combination_actions]
+    # remove duplicações da lista de clausulas
+    clauses = list(set(clauses))
 
     return variables, clauses
